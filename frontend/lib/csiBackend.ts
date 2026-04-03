@@ -190,65 +190,19 @@ export async function runCsiAnalysis({
   text,
   url,
 }: AnalyzeInput): Promise<CsiAnalyzeResponse> {
-  const startedAt = Date.now();
-
-  const content = url ? await scrapeUrl(url) : createInlineTextPayload(text);
-  if (!content.content.trim()) {
-    throw new Error("No content to analyze. Provide text or a valid URL.");
-  }
-
-  const credibility = content.domain
-    ? scoreDomain(content.domain)
-    : {
-        credibility_score: 50,
-        flags: [] as string[],
-        is_known_satire: false,
-        is_known_unreliable: false,
-      };
-
-  const [claims, linguistic, bias] = await Promise.all([
-    extractClaims(content.content),
-    analyzeLinguistics(content.content),
-    analyzeBiasSentiment(content.content),
-  ]);
-
-  const evidence = await searchClaims(claims);
-  const verdictResult = await generateVerdict({
-    source_credibility: credibility.credibility_score,
-    manipulation_score: linguistic.manipulation_score,
-    evidence,
-    claims,
-    source_flags: credibility.flags,
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+  
+  const response = await fetch(`${apiUrl}/analyze`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, url }) // Forward request directly to Python backend
   });
 
-  let real_news_sources: CsiRealNewsSource[] = [];
-  let what_really_happened: string | null = null;
-
-  if (verdictResult.verdict === "Fake" || verdictResult.verdict === "Misleading") {
-    const topicQuery = `${content.title} fact check real news`;
-    const realNewsResult = await findRealNews(topicQuery);
-    real_news_sources = realNewsResult.sources;
-    what_really_happened = realNewsResult.what_really_happened || null;
+  if (!response.ok) {
+    throw new Error(`Python Backend Error: ${await response.text()}`);
   }
 
-  return {
-    verdict: verdictResult.verdict,
-    confidence_score: verdictResult.confidence_score,
-    explanation: verdictResult.explanation,
-    what_really_happened,
-    real_news_sources,
-    claims,
-    manipulation_score: linguistic.manipulation_score,
-    bias_score: bias.bias_score,
-    bias_type: bias.bias_type,
-    sentiment_intensity: bias.sentiment_intensity,
-    flagged_sentences: linguistic.flagged_sentences,
-    source_credibility: credibility.credibility_score,
-    evidence,
-    processing_time_ms: Date.now() - startedAt,
-    article_title: content.title,
-    domain: content.domain,
-  };
+  return (await response.json()) as CsiAnalyzeResponse;
 }
 
 async function extractClaims(text: string): Promise<string[]> {
