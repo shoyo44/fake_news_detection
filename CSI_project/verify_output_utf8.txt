@@ -1,0 +1,30 @@
+﻿
+======================================
+Testing claim: big news it is confirmed that tamil actor and politician Joseph Vijay's name is present in the Epstien files.
+======================================
+
+=== RESULTS ===
+Verdict: Misleading
+Confidence: 40%
+Explanation: No direct cross-referenced evidence could be found to verify these specific claims from reputable sources.
+
+Claims Extracted: 1
+1: Joseph Vijay's name is present in the Epstein files.
+
+Evidence Found: 0
+
+======================================
+Testing claim: The sun rises in the east and Joseph Vijay is in the Epstein files.
+======================================
+
+=== RESULTS ===
+Verdict: Misleading
+Confidence: 40%
+Explanation: No direct cross-referenced evidence could be found to verify these specific claims from reputable sources.
+
+Claims Extracted: 2
+1: The sun rises in the east
+2: Joseph Vijay is in the Epstein files
+
+Evidence Found: 0
+

@@ -1,0 +1,27 @@
+﻿python : C:\Users\hp\an
+aconda3\envs\news\pytho
+n.exe: can't open file 
+'D:\\Projects\\CSI Proj
+ect\\verify_fix.py': 
+[Errno 2] No such file 
+or directory
+At line:1 char:73
++ ... conda activate 
+news; python 
+verify_fix.py > 
+verify_output_v5.txt 
+2>&1
++                      
+    ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (C:\Users\hp\a   
+ na...le or directo    
+ry:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 

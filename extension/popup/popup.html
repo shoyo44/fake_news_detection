@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruthGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header">
+      <div id="logo">
+        <div id="logo-icon">🛡️</div>
+        <div id="logo-text">Truth<span>Guard</span></div>
+      </div>
+      <div id="header-actions">
+        <button id="signin-btn" title="Sign in">👤</button>
+        <button id="tab-btn" title="Analyze current tab content">📰</button>
+        <button id="settings-btn" title="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <div id="user-bar" class="hidden">
+      <div id="user-meta">
+        <div id="user-name"></div>
+        <div id="user-email"></div>
+      </div>
+      <button id="open-dashboard-btn">Dashboard</button>
+    </div>
+
+    <!-- Tab Bar -->
+    <div id="tab-bar">
+      <button class="tab active" data-tab="text" id="tab-text">Text</button>
+      <button class="tab" data-tab="url" id="tab-url">URL</button>
+    </div>
+
+    <!-- Input Area -->
+    <div id="input-area">
+      <div id="input-text-wrap" class="input-wrap active">
+        <textarea
+          id="input-text"
+          placeholder="Paste a news headline, claim, or article excerpt…"
+          maxlength="2000"
+          rows="4"
+        ></textarea>
+        <div id="char-count"><span id="char-used">0</span>/2000</div>
+      </div>
+      <div id="input-url-wrap" class="input-wrap">
+        <input
+          type="url"
+          id="input-url"
+          placeholder="https://example.com/article"
+        />
+        <div id="auto-detect-bar">
+          <span id="auto-detect-spinner" class="hidden">⏳</span>
+          <span id="auto-detect-label">Auto-detecting current page…</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analyze Button -->
+    <button id="analyze-btn">
+      <span id="btn-text">Analyze</span>
+      <span id="btn-spinner" class="hidden">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="20" stroke-linecap="round">
+            <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        Analyzing…
+      </span>
+    </button>
+
+    <!-- Results Area -->
+    <div id="results" class="hidden">
+      <!-- Verdict Card -->
+      <div id="verdict-card">
+        <div id="verdict-icon-wrap">
+          <span id="verdict-icon"></span>
+        </div>
+        <div id="verdict-text-wrap">
+          <h2 id="verdict-label"></h2>
+          <p id="verdict-sub"></p>
+        </div>
+      </div>
+
+      <!-- Confidence -->
+      <div class="result-section" id="section-confidence">
+        <div class="section-header">
+          <span class="section-title">Confidence</span>
+          <span id="confidence-pct" class="section-value"></span>
+        </div>
+        <div class="conf-bar">
+          <div id="conf-fill"></div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="result-section" id="section-explanation">
+        <div class="section-header">
+          <span class="section-title">AI Explanation</span>
+        </div>
+        <p id="explanation-text"></p>
+      </div>
+
+      <!-- What Really Happened -->
+      <div class="result-section hidden" id="section-whathappened">
+        <div class="section-header">
+          <span class="section-title">What Really Happened</span>
+        </div>
+        <p id="whathappened-text"></p>
+      </div>
+
+      <!-- Flagged Sentences -->
+      <div class="result-section hidden" id="section-flagged">
+        <div class="section-header">
+          <span class="section-title">🚩 Flagged Sentences</span>
+        </div>
+        <div id="flagged-list"></div>
+      </div>
+
+      <!-- Sources -->
+      <div class="result-section hidden" id="section-sources">
+        <div class="section-header">
+          <span class="section-title">📰 Real News Sources</span>
+        </div>
+        <div id="sources-list"></div>
+      </div>
+    </div>
+
+    <div id="history-section" class="hidden">
+      <div class="section-header">
+        <span class="section-title">Saved History</span>
+      </div>
+      <div id="history-list"></div>
+    </div>
+
+    <!-- Error Area -->
+    <div id="error-area" class="hidden">
+      <div id="error-box">
+        <strong>⚠️ Analysis Failed</strong>
+        <p id="error-msg"></p>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state">
+      <div id="empty-icon">🛡️</div>
+      <p>Detecting current page URL…</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Global ignores
+.env*
+!.env.example
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+venv/
+env/
+.dev-server.*
+.DS_Store
+.next/
+
+# Frontend ignores
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+frontend/.vercel/
+
+# Backend ignores
+backend/__pycache__/
+backend/.pytest_cache/
