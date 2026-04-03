@@ -1,9 +1,0 @@
-{
-  "functions": [
-    {
-      "src": "app/api/**",
-      "use": "@vercel/node"
-    }
-  ],
-  "maxDuration": 60
-}

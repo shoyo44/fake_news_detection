@@ -3,7 +3,7 @@ import { runCsiAnalysis, CsiAnalyzeResponse, CsiEvidenceItem } from "@/lib/csiBa
 import { cleanText } from "@/lib/textUtils";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+// maxDuration 60 removed for Vercel Hobby compatibility
 export const dynamic = "force-dynamic";
 
 export interface AnalysisResult {
