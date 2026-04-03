@@ -1,0 +1,64 @@
+﻿
+> truthguard-x@0.1.0 build
+> next build
+
+node.exe : ΓÜá 
+`images.domains` is 
+deprecated in favor of 
+`images.remotePatterns`. 
+Please update 
+next.config.ts to protect 
+your application from 
+malicious users.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ΓÜá  
+   `images.dom...aliciou   
+ s users.:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+Γû▓ Next.js 16.2.2 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./app
+Error: Next.js inferred 
+your workspace root, but 
+it may not be correct.
+    We couldn't find the 
+Next.js package 
+(next/package.json) from 
+the project directory: D:\P
+rojects\truthguard-x\fronte
+nd\app
+     To fix this, set 
+turbopack.root in your 
+Next.js config, or ensure 
+the Next.js package is 
+resolvable from this 
+directory.
+    Note: For security and 
+performance reasons, files 
+outside of the project 
+directory will not be 
+compiled.
+    See https://nextjs.org/
+docs/app/api-reference/conf
+ig/next-config-js/turbopack
+#root-directory for more 
+information.
+
+    at ignore-listed frames

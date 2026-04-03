@@ -351,7 +351,7 @@ async function findRealNews(topicQuery: string): Promise<{
     const sources = rawSources.map((result) => ({
       title: result.title || "",
       url: result.url || "",
-      source: extractDomain(result.url),
+      source: extractDomain(result.url || ""),
       summary: (result.content || "").slice(0, 250),
       published_date: null,
     }));
