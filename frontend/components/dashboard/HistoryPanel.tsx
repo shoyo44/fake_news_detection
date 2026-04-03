@@ -3,19 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, CheckCircle, XCircle, AlertTriangle, HelpCircle, ChevronRight, Trash2 } from "lucide-react";
 
-export interface HistoryItem {
-  id: string;
-  verdict: "REAL" | "FAKE" | "MISLEADING" | "UNVERIFIED";
-  confidence: number;
-  inputType: "text" | "url" | "pdf";
-  preview: string;
-  processedAt: string;
-  result: object;
-}
+import { UserHistoryItem } from "@/lib/history";
 
 interface HistoryPanelProps {
-  history: HistoryItem[];
-  onLoad: (item: HistoryItem) => void;
+  history: UserHistoryItem[];
+  onLoad: (item: UserHistoryItem) => void;
   onClear: () => void;
 }
 
